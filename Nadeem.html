@@ -13,10 +13,14 @@
         @media print {
             @page {
                 size: A4;
-                margin: 10mm;
+                margin: 0;
+            }
+            body { 
+                background: white !important; 
+                -webkit-print-color-adjust: exact !important; 
+                print-color-adjust: exact !important;
             }
             .no-print { display: none !important; }
-            body { background: white; padding: 0; margin: 0; }
             .main-container { 
                 box-shadow: none !important; 
                 border: none !important; 
@@ -25,10 +29,17 @@
                 max-width: 100% !important; 
                 border-radius: 0 !important;
             }
-            .grid-cols-12 { display: grid !important; grid-template-columns: repeat(12, minmax(0, 1fr)) !important; }
-            aside { grid-column: span 4 / span 4 !important; }
+            .grid-cols-12 { 
+                display: grid !important; 
+                grid-template-columns: repeat(12, minmax(0, 1fr)) !important; 
+            }
+            aside { grid-column: span 4 / span 4 !important; background-color: #f8fafc !important; }
             article { grid-column: span 8 / span 8 !important; }
-            .print-break { page-break-inside: avoid; }
+            
+            h1 { font-size: 2.5rem !important; }
+            header { padding: 2rem !important; }
+            .print-break { page-break-inside: avoid; break-inside: avoid; }
+            section { margin-bottom: 2rem !important; }
         }
 
         .profile-img-placeholder {
@@ -69,19 +80,19 @@
     <main class="main-container max-w-5xl mx-auto my-0 md:my-10 bg-white shadow-2xl md:rounded-2xl overflow-hidden border border-slate-200 print:shadow-none print:border-none print:my-0">
         
         <!-- Premium Header Section -->
-        <header class="bg-slate-900 text-white p-8 md:p-12 relative overflow-hidden">
+        <header class="bg-slate-900 text-white p-8 md:p-12 relative overflow-hidden print:bg-slate-900">
             <div class="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full -mr-48 -mt-48 blur-3xl"></div>
             
             <div class="relative z-10 flex flex-col md:flex-row gap-8 items-center md:items-start">
                 <div class="flex-shrink-0">
-                    <div class="profile-img-placeholder w-32 h-32 md:w-40 md:h-40 rounded-2xl shadow-2xl overflow-hidden">
+                    <div class="Nadeem's Picture NoBG.png w-32 h-32 md:w-40 md:h-40 rounded-2xl shadow-2xl overflow-hidden">
                         <i class="fas fa-user-tie text-slate-400 text-5xl"></i>
                     </div>
                 </div>
 
                 <div class="flex-grow text-center md:text-left">
                     <h1 class="text-4xl md:text-5xl font-black tracking-tight mb-2">NADEEM SALAUDDIN</h1>
-                    <div class="inline-block px-4 py-1 bg-blue-600 text-white rounded font-bold tracking-widest uppercase text-xs mb-6">
+                    <div class="inline-block px-4 py-1 bg-blue-600 text-white rounded font-bold tracking-widest uppercase text-xs mb-6 print:bg-blue-600">
                         Logistics & Transportation Supervisor
                     </div>
                     
@@ -112,8 +123,16 @@
         <div class="grid grid-cols-1 md:grid-cols-12">
             
             <!-- Sidebar -->
-            <aside class="md:col-span-4 bg-slate-50 p-8 border-r border-slate-200">
-                <section class="mb-10">
+            <aside class="md:col-span-4 bg-slate-50 p-8 border-r border-slate-200 print:bg-slate-50">
+                <!-- HIRE ME BUTTON (Pre-filled Email) -->
+                <section class="mb-10 no-print">
+                    <a href="mailto:nadeeemsalauddin786786@gmail.com?subject=Job Inquiry: Logistics & Transportation Role&body=Dear Nadeem,%0D%0A%0D%0AWe reviewed your profile and are interested in your experience with Aramco projects and KSA Customs regulations.%0D%0A%0D%0APlease let us know when you would be available for a discussion regarding an open position in our team.%0D%0A%0D%0ABest regards," 
+                       class="w-full bg-blue-600 text-white text-center py-4 rounded-xl font-bold text-sm block hover:bg-blue-700 transition-all shadow-lg transform hover:-translate-y-0.5">
+                        <i class="fas fa-briefcase mr-2"></i> HIRE ME NOW
+                    </a>
+                </section>
+
+                <section class="mb-10 print-break">
                     <h3 class="text-xs font-black text-slate-400 uppercase tracking-[0.2em] mb-5 border-b-2 border-slate-200 pb-2">Technical Expertise</h3>
                     <div class="space-y-3">
                         <div class="flex items-center gap-3 p-3 bg-white rounded-xl border border-slate-200 text-[13px] font-bold shadow-sm">
@@ -180,7 +199,7 @@
             <!-- Main Content -->
             <article class="md:col-span-8 p-8 md:p-12">
                 
-                <section class="mb-12">
+                <section class="mb-12 print-break">
                     <h2 class="text-2xl font-black text-slate-900 mb-6 flex items-center gap-3">
                         <span class="w-10 h-10 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center">
                             <i class="fas fa-user-check text-sm"></i>
@@ -216,7 +235,7 @@
                                 </li>
                                 <li class="flex gap-3">
                                     <i class="fas fa-check text-blue-500 mt-1"></i>
-                                    <span>Supervised import/export activities in full compliance with Saudi regulations, utilizing <span class="text-slate-900 font-bold">Saber and FASAH</span>.</span>
+                                    <span>Supervised import/export activities in full compliance with Saudi regulations, utilizing <span class="text-slate-900 font-bold underline decoration-blue-500">Saber and FASAH</span>.</span>
                                 </li>
                                 <li class="flex gap-3">
                                     <i class="fas fa-check text-blue-500 mt-1"></i>
@@ -225,10 +244,6 @@
                                 <li class="flex gap-3">
                                     <i class="fas fa-check text-blue-500 mt-1"></i>
                                     <span>Negotiated competitive rates and contracts with major shipping lines and vendors to ensure cost-efficiency.</span>
-                                </li>
-                                <li class="flex gap-3">
-                                    <i class="fas fa-check text-blue-500 mt-1"></i>
-                                    <span>Ensured 100% adherence to Aramco safety standards and customs clearance procedures within given deadlines.</span>
                                 </li>
                             </ul>
                         </div>
@@ -270,11 +285,11 @@
                         Academic Background
                     </h2>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm">
+                        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm print:bg-slate-50">
                             <h4 class="font-black text-slate-900 text-sm uppercase">Bachelor of Commerce</h4>
                             <p class="text-xs font-bold text-blue-600 mt-1">Vinoba Bhave University | 2015</p>
                         </div>
-                        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm">
+                        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm print:bg-slate-50">
                             <h4 class="font-black text-slate-900 text-sm uppercase">Higher Secondary</h4>
                             <p class="text-xs font-bold text-blue-600 mt-1">N.I.O.S, Delhi | 2012</p>
                         </div>
