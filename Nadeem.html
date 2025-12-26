@@ -11,23 +11,32 @@
         body { font-family: 'Inter', sans-serif; }
         
         @media print {
+            @page {
+                size: A4;
+                margin: 10mm;
+            }
             .no-print { display: none !important; }
             body { background: white; padding: 0; margin: 0; }
-            .main-container { shadow: none; border: none; margin: 0; width: 100%; max-width: 100%; }
+            .main-container { 
+                box-shadow: none !important; 
+                border: none !important; 
+                margin: 0 !important; 
+                width: 100% !important; 
+                max-width: 100% !important; 
+                border-radius: 0 !important;
+            }
+            .grid-cols-12 { display: grid !important; grid-template-columns: repeat(12, minmax(0, 1fr)) !important; }
+            aside { grid-column: span 4 / span 4 !important; }
+            article { grid-column: span 8 / span 8 !important; }
             .print-break { page-break-inside: avoid; }
         }
 
         .profile-img-placeholder {
-            background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
             display: flex;
             align-items: center;
             justify-content: center;
             border: 4px solid white;
-        }
-
-        .interactive-link:hover {
-            color: #60a5fa; /* blue-400 */
-            text-decoration: underline;
         }
 
         .status-badge {
@@ -41,19 +50,19 @@
         }
     </style>
 </head>
-<body class="bg-slate-100 text-slate-800 leading-relaxed print:bg-white">
+<body class="bg-slate-100 text-slate-800 leading-normal print:bg-white">
 
     <!-- Header / Action Bar -->
-    <nav class="no-print sticky top-0 bg-white/80 backdrop-blur-md shadow-sm z-50 px-6 py-3 flex justify-between items-center">
-        <div class="flex items-center gap-3">
-            <span class="status-badge px-3 py-1 bg-green-600 text-white text-[10px] font-black uppercase tracking-[0.2em] rounded-full flex items-center gap-2">
-                <span class="w-1.5 h-1.5 bg-white rounded-full"></span>
+    <nav class="no-print sticky top-0 bg-white/95 backdrop-blur-md shadow-md z-50 px-8 py-3 flex justify-between items-center">
+        <div class="flex items-center gap-4">
+            <span class="status-badge px-4 py-1.5 bg-green-600 text-white text-xs font-bold uppercase tracking-widest rounded-full flex items-center gap-2">
+                <span class="w-2 h-2 bg-white rounded-full"></span>
                 Open To Work
             </span>
-            <span class="hidden md:inline text-xs font-bold text-slate-400 uppercase tracking-widest">Available for Immediate Hire</span>
+            <span class="hidden lg:inline text-sm font-semibold text-slate-500 uppercase tracking-wider">Logistics & Compliance Expert | Immediate Joining</span>
         </div>
-        <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-full text-sm font-bold transition-all transform hover:scale-105 shadow-lg flex items-center gap-2">
-            <i class="fas fa-file-pdf"></i> Save as PDF
+        <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-xl text-sm font-bold transition-all shadow-lg flex items-center gap-2">
+            <i class="fas fa-file-pdf"></i> Download Professional PDF
         </button>
     </nav>
 
@@ -61,46 +70,38 @@
         
         <!-- Premium Header Section -->
         <header class="bg-slate-900 text-white p-8 md:p-12 relative overflow-hidden">
-            <div class="absolute top-0 right-0 w-64 h-64 bg-blue-600/10 rounded-full -mr-32 -mt-32 blur-3xl"></div>
+            <div class="absolute top-0 right-0 w-96 h-96 bg-blue-500/10 rounded-full -mr-48 -mt-48 blur-3xl"></div>
             
             <div class="relative z-10 flex flex-col md:flex-row gap-8 items-center md:items-start">
-                <!-- Profile Image Area -->
                 <div class="flex-shrink-0">
                     <div class="profile-img-placeholder w-32 h-32 md:w-40 md:h-40 rounded-2xl shadow-2xl overflow-hidden">
-                        <i class="fas fa-user text-slate-400 text-5xl"></i>
+                        <i class="fas fa-user-tie text-slate-400 text-5xl"></i>
                     </div>
                 </div>
 
                 <div class="flex-grow text-center md:text-left">
-                    <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight mb-2">NADEEM SALAUDDIN</h1>
-                    <div class="inline-block px-3 py-1 bg-blue-600/30 text-blue-400 rounded text-sm font-bold tracking-widest uppercase mb-6">
+                    <h1 class="text-4xl md:text-5xl font-black tracking-tight mb-2">NADEEM SALAUDDIN</h1>
+                    <div class="inline-block px-4 py-1 bg-blue-600 text-white rounded font-bold tracking-widest uppercase text-xs mb-6">
                         Logistics & Transportation Supervisor
                     </div>
                     
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-8 text-slate-300 text-sm">
-                        <!-- Clickable Phone Numbers -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-y-3 gap-x-10 text-slate-300 text-sm">
                         <div class="flex items-center justify-center md:justify-start gap-3">
-                            <i class="fas fa-phone text-blue-500 w-4"></i>
-                            <div class="flex flex-wrap justify-center md:justify-start gap-x-2">
-                                <a href="tel:+966571810016" class="interactive-link transition-colors">+966 571810016</a>
-                                <span class="text-slate-600">/</span>
-                                <a href="tel:+9184367981498" class="interactive-link transition-colors">+91 84367981498</a>
-                            </div>
-                        </div>
-                        <!-- Clickable Email with Automated Template -->
-                        <div class="flex items-center justify-center md:justify-start gap-3">
-                            <i class="fas fa-envelope text-blue-500 w-4"></i>
-                            <a href="mailto:nadeeemsalauddin786786@gmail.com?subject=Job opportunity for Logistics Supervisor Role&body=Hi Nadeem,%0D%0A%0D%0AWe came across your profile and are interested in discussing a potential opportunity with our organization.%0D%0A%0D%0APlease let us know a convenient time to connect.%0D%0A%0D%0ABest regards," 
-                               class="interactive-link transition-colors break-all">
-                                nadeeemsalauddin786786@gmail.com
-                            </a>
+                            <i class="fas fa-phone text-blue-400"></i>
+                            <a href="tel:+966571810016" class="hover:text-blue-400 transition-colors">+966 571810016</a>
+                            <span class="text-slate-600">|</span>
+                            <a href="tel:+9184367981498" class="hover:text-blue-400 transition-colors">+91 84367981498</a>
                         </div>
                         <div class="flex items-center justify-center md:justify-start gap-3">
-                            <i class="fas fa-location-dot text-blue-500 w-4"></i>
+                            <i class="fas fa-envelope text-blue-400"></i>
+                            <a href="mailto:nadeeemsalauddin786786@gmail.com" class="hover:text-blue-400 transition-colors">nadeeemsalauddin786786@gmail.com</a>
+                        </div>
+                        <div class="flex items-center justify-center md:justify-start gap-3">
+                            <i class="fas fa-map-marker-alt text-blue-400"></i>
                             <span>Hofuf, Al Ahsa, Saudi Arabia</span>
                         </div>
                         <div class="flex items-center justify-center md:justify-start gap-3">
-                            <i class="fas fa-id-card text-blue-500 w-4"></i>
+                            <i class="fas fa-id-card text-blue-400"></i>
                             <span>Iqama: 2564336440 (Transferable)</span>
                         </div>
                     </div>
@@ -110,229 +111,186 @@
 
         <div class="grid grid-cols-1 md:grid-cols-12">
             
-            <!-- Sidebar (Left) -->
+            <!-- Sidebar -->
             <aside class="md:col-span-4 bg-slate-50 p-8 border-r border-slate-200">
-                
-                <!-- Recruitment Call to Action -->
-                <section class="mb-10 no-print">
-                    <a href="mailto:nadeeemsalauddin786786@gmail.com?subject=Job opportunity for Logistics Supervisor Role&body=Hi Nadeem,%0D%0A%0D%0AWe came across your profile and are interested in discussing a potential opportunity with our organization.%0D%0A%0D%0APlease let us know a convenient time to connect.%0D%0A%0D%0ABest regards," 
-                       class="w-full bg-blue-600 text-white text-center py-3 rounded-xl font-bold text-sm block hover:bg-blue-700 transition-all shadow-md">
-                        <i class="fas fa-paper-plane mr-2"></i> Hire Me Now
-                    </a>
-                </section>
-
-                <!-- Experience Summary -->
                 <section class="mb-10">
-                    <h3 class="text-xs font-black text-slate-400 uppercase tracking-[0.2em] mb-4 border-b pb-2">Experience Level</h3>
-                    <div class="flex items-baseline gap-2 text-blue-700">
-                        <span class="text-4xl font-black">7.5+</span>
-                        <span class="text-sm font-bold uppercase">Years in Gulf</span>
+                    <h3 class="text-xs font-black text-slate-400 uppercase tracking-[0.2em] mb-5 border-b-2 border-slate-200 pb-2">Technical Expertise</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3 p-3 bg-white rounded-xl border border-slate-200 text-[13px] font-bold shadow-sm">
+                            <i class="fas fa-file-invoice text-blue-600"></i> Saber & FASAH Portals
+                        </div>
+                        <div class="flex items-center gap-3 p-3 bg-white rounded-xl border border-slate-200 text-[13px] font-bold shadow-sm">
+                            <i class="fas fa-ship text-blue-600"></i> KSA Customs Clearance
+                        </div>
+                        <div class="flex items-center gap-3 p-3 bg-white rounded-xl border border-slate-200 text-[13px] font-bold shadow-sm">
+                            <i class="fas fa-globe text-blue-600"></i> Air & Sea Freight Tracking
+                        </div>
+                        <div class="flex items-center gap-3 p-3 bg-white rounded-xl border border-slate-200 text-[13px] font-bold shadow-sm">
+                            <i class="fas fa-shield-alt text-blue-600"></i> Aramco Safety Standards
+                        </div>
+                        <div class="flex items-center gap-3 p-3 bg-white rounded-xl border border-slate-200 text-[13px] font-bold shadow-sm">
+                            <i class="fas fa-handshake text-blue-600"></i> Vendor Negotiation
+                        </div>
                     </div>
                 </section>
 
-                <!-- Core Skills -->
                 <section class="mb-10 print-break">
-                    <h3 class="text-xs font-black text-slate-400 uppercase tracking-[0.2em] mb-4 border-b pb-2">Specializations</h3>
-                    <div class="space-y-2">
-                        <div class="flex items-center gap-2 p-2 bg-white rounded border border-slate-200 text-sm font-semibold">
-                            <i class="fas fa-check-circle text-blue-600 text-xs"></i> Aramco Safety Standards
+                    <h3 class="text-xs font-black text-slate-400 uppercase tracking-[0.2em] mb-5 border-b-2 border-slate-200 pb-2">Document Registry</h3>
+                    <div class="bg-white rounded-xl border border-slate-200 overflow-hidden text-sm shadow-sm">
+                        <div class="px-4 py-3 border-b flex justify-between bg-slate-50/50">
+                            <span class="text-slate-500 font-medium">Iqama</span>
+                            <span class="font-bold text-slate-900">2026</span>
                         </div>
-                        <div class="flex items-center gap-2 p-2 bg-white rounded border border-slate-200 text-sm font-semibold">
-                            <i class="fas fa-check-circle text-blue-600 text-xs"></i> Fleet Asset Management
+                        <div class="px-4 py-3 border-b flex justify-between">
+                            <span class="text-slate-500 font-medium">KSA License</span>
+                            <span class="font-bold text-slate-900">2026</span>
                         </div>
-                        <div class="flex items-center gap-2 p-2 bg-white rounded border border-slate-200 text-sm font-semibold">
-                            <i class="fas fa-check-circle text-blue-600 text-xs"></i> Heavy Equipment Supervision
-                        </div>
-                        <div class="flex items-center gap-2 p-2 bg-white rounded border border-slate-200 text-sm font-semibold">
-                            <i class="fas fa-check-circle text-blue-600 text-xs"></i> Manpower Scheduling
-                        </div>
-                        <div class="flex items-center gap-2 p-2 bg-white rounded border border-slate-200 text-sm font-semibold">
-                            <i class="fas fa-check-circle text-blue-600 text-xs"></i> Shipment & Custom Clearance
-                        </div>
-                        <div class="flex items-center gap-2 p-2 bg-white rounded border border-slate-200 text-sm font-semibold">
-                            <i class="fas fa-check-circle text-blue-600 text-xs"></i> Dispatch & Material Handelling
-                        </div>
-                        <div class="flex items-center gap-2 p-2 bg-white rounded border border-slate-200 text-sm font-semibold">
-                            <i class="fas fa-check-circle text-blue-600 text-xs"></i> 
+                        <div class="px-4 py-3 flex justify-between">
+                            <span class="text-slate-500 font-medium">Passport</span>
+                            <span class="font-bold text-slate-900">2029</span>
                         </div>
                     </div>
                 </section>
 
-                <!-- Documents Table -->
-                <section class="mb-10 print-break">
-                    <h3 class="text-xs font-black text-slate-400 uppercase tracking-[0.2em] mb-4 border-b pb-2">Document Registry</h3>
-                    <div class="bg-white rounded-lg border border-slate-200 overflow-hidden text-xs">
-                        <div class="p-3 border-b bg-slate-100 font-bold flex justify-between">
-                            <span>Document</span>
-                            <span>Expiry Date</span>
-                        </div>
-                        <div class="p-3 border-b flex justify-between">
-                            <span class="text-slate-500 italic">Iqama</span>
-                            <span class="font-bold">29/12/2026</span>
-                        </div>
-                        <div class="p-3 border-b flex justify-between">
-                            <span class="text-slate-500 italic">License</span>
-                            <span class="font-bold">03/12/2026</span>
-                        </div>
-                        <div class="p-3 flex justify-between">
-                            <span class="text-slate-500 italic">Passport</span>
-                            <span class="font-bold">31/12/2029</span>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Languages -->
                 <section class="print-break">
-                    <h3 class="text-xs font-black text-slate-400 uppercase tracking-[0.2em] mb-4 border-b pb-2">Languages</h3>
-                    <div class="space-y-4">
+                    <h3 class="text-xs font-black text-slate-400 uppercase tracking-[0.2em] mb-5 border-b-2 border-slate-200 pb-2">Communication</h3>
+                    <div class="space-y-5">
                         <div>
-                            <div class="flex justify-between text-xs font-bold mb-1">
+                            <div class="flex justify-between text-xs font-bold mb-2">
                                 <span>ENGLISH / HINDI</span>
-                                <span class="text-blue-600">Native/Fluent</span>
+                                <span class="text-blue-600">Fluent</span>
                             </div>
-                            <div class="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
+                            <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
                                 <div class="bg-blue-600 h-full w-[100%]"></div>
                             </div>
                         </div>
                         <div>
-                            <div class="flex justify-between text-xs font-bold mb-1">
-                                <span>URDU</span>
+                            <div class="flex justify-between text-xs font-bold mb-2">
+                                <span>ARABIC</span>
                                 <span class="text-blue-600">Advanced</span>
                             </div>
-                            <div class="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
-                                <div class="bg-blue-600 h-full w-[90%]"></div>
-                            </div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between text-xs font-bold mb-1">
-                                <span>ARABIC / BENGALI</span>
-                                <span class="text-blue-600">Intermediate</span>
-                            </div>
-                            <div class="w-full bg-slate-200 h-1.5 rounded-full overflow-hidden">
-                                <div class="bg-blue-600 h-full w-[65%]"></div>
+                            <div class="w-full bg-slate-200 h-2 rounded-full overflow-hidden">
+                                <div class="bg-blue-600 h-full w-[75%]"></div>
                             </div>
                         </div>
                     </div>
                 </section>
-
             </aside>
 
-            <!-- Main Content (Right) -->
+            <!-- Main Content -->
             <article class="md:col-span-8 p-8 md:p-12">
                 
-                <!-- Summary -->
                 <section class="mb-12">
-                    <h2 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-3">
-                        <span class="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-sm">
-                            <i class="fas fa-bullseye"></i>
+                    <h2 class="text-2xl font-black text-slate-900 mb-6 flex items-center gap-3">
+                        <span class="w-10 h-10 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-user-check text-sm"></i>
                         </span>
-                        Executive Summary
+                        Professional Summary
                     </h2>
-                    <p class="text-slate-600 text-lg leading-relaxed font-light">
-                        Resourceful <span class="font-semibold text-slate-800 underline decoration-blue-500 decoration-2">Movement Supervisor</span> with a proven track record in high-stakes logistics operations within Saudi Arabia. Expert in managing massive equipment inventories, ensuring technical maintenance compliance, and optimizing operator workflows to meet rigorous site demands and safety protocols.
+                    <p class="text-slate-600 text-base leading-relaxed font-medium">
+                        Dedicated <span class="text-blue-600 font-bold">Logistics & Transportation Supervisor</span> with 7.5 years of expertise in high-pressure Gulf environments. Specialized in managing import/export activities, KSA customs regulations (**Saber & FASAH**), and multi-modal shipment tracking for major Aramco projects. Proven ability to negotiate competitive vendor contracts, track sea/air freight, and adapt to challenging site conditions while meeting strict project deadlines.
                     </p>
                 </section>
 
-                <!-- Experience -->
                 <section class="mb-12">
-                    <h2 class="text-xl font-bold text-slate-900 mb-8 flex items-center gap-3">
-                        <span class="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-sm">
-                            <i class="fas fa-history"></i>
+                    <h2 class="text-2xl font-black text-slate-900 mb-8 flex items-center gap-3">
+                        <span class="w-10 h-10 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-history text-sm"></i>
                         </span>
-                        Professional Experience
+                        Career Milestones
                     </h2>
 
-                    <div class="space-y-12">
-                        <!-- Role 1 -->
-                        <div class="relative pl-8 border-l-2 border-slate-200 print-break">
-                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-blue-600 border-4 border-white shadow-sm"></div>
-                            <div class="flex flex-col md:flex-row md:justify-between mb-2">
-                                <h3 class="text-lg font-bold text-slate-900">Equipment Coordinator / Movement Supervisor</h3>
-                                <span class="text-sm font-bold text-blue-600 md:text-right">OCT 2023 — OCT 2025</span>
+                    <div class="space-y-10">
+                        <!-- Current Role -->
+                        <div class="relative pl-8 border-l-2 border-blue-500 print-break">
+                            <div class="absolute -left-[11px] top-0 w-5 h-5 rounded-full bg-blue-600 border-4 border-white shadow-md"></div>
+                            <div class="flex flex-col lg:flex-row lg:justify-between mb-2">
+                                <h3 class="text-lg font-bold text-slate-900 uppercase tracking-tight">Logistics & Transportation Supervisor</h3>
+                                <span class="text-sm font-black text-blue-600 uppercase">2023 — 2025</span>
                             </div>
-                            <p class="text-slate-700 font-bold text-sm mb-4">Mubarak Merai Al Salomi Company PVT. LTD.</p>
-                            <ul class="text-sm text-slate-600 space-y-3">
-                                <li class="flex gap-2">
-                                    <span class="text-blue-500">•</span>
-                                    <span>Directing equipment deployment at <span class="font-medium text-slate-800">Jafura TCF & Al Uqair</span> sites.</span>
+                            <p class="text-slate-500 font-bold text-sm mb-4">Mubarak Merai Al Salomi Company PVT. LTD. (KSA)</p>
+                            <ul class="text-slate-600 text-sm space-y-3 font-medium">
+                                <li class="flex gap-3">
+                                    <i class="fas fa-check text-blue-500 mt-1"></i>
+                                    <span>Directed logistical movements for Aramco projects: <span class="text-slate-900 font-bold">Jafura TCF</span> and <span class="text-slate-900 font-bold">Amiral TCF Jubail</span>.</span>
                                 </li>
-                                <li class="flex gap-2">
-                                    <span class="text-blue-500">•</span>
-                                    <span>Spearheading <span class="font-medium text-slate-800">Aramco License Testing</span> preparation for operators, ensuring 100% safety awareness and technical readiness.</span>
+                                <li class="flex gap-3">
+                                    <i class="fas fa-check text-blue-500 mt-1"></i>
+                                    <span>Supervised import/export activities in full compliance with Saudi regulations, utilizing <span class="text-slate-900 font-bold">Saber and FASAH</span>.</span>
                                 </li>
-                                <li class="flex gap-2">
-                                    <span class="text-blue-500">•</span>
-                                    <span>Managing multi-site payroll via meticulous verification of operator and driver monthly timesheets.</span>
+                                <li class="flex gap-3">
+                                    <i class="fas fa-check text-blue-500 mt-1"></i>
+                                    <span>Managed end-to-end documentation for import shipments and maintained real-time tracking for air and sea freight.</span>
+                                </li>
+                                <li class="flex gap-3">
+                                    <i class="fas fa-check text-blue-500 mt-1"></i>
+                                    <span>Negotiated competitive rates and contracts with major shipping lines and vendors to ensure cost-efficiency.</span>
+                                </li>
+                                <li class="flex gap-3">
+                                    <i class="fas fa-check text-blue-500 mt-1"></i>
+                                    <span>Ensured 100% adherence to Aramco safety standards and customs clearance procedures within given deadlines.</span>
                                 </li>
                             </ul>
                         </div>
 
-                        <!-- Role 2 -->
+                        <!-- Previous Role 1 -->
                         <div class="relative pl-8 border-l-2 border-slate-200 print-break">
-                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-slate-300 border-4 border-white shadow-sm"></div>
-                            <div class="flex flex-col md:flex-row md:justify-between mb-2">
-                                <h3 class="text-lg font-bold text-slate-900">Transport Manager</h3>
-                                <span class="text-sm font-bold text-slate-400 md:text-right">NOV 2021 — MAY 2023</span>
+                            <div class="absolute -left-[11px] top-0 w-5 h-5 rounded-full bg-slate-300 border-4 border-white"></div>
+                            <div class="flex flex-col lg:flex-row lg:justify-between mb-2">
+                                <h3 class="text-lg font-bold text-slate-800 uppercase tracking-tight">Transport Manager</h3>
+                                <span class="text-sm font-bold text-slate-400 uppercase">2021 — 2023</span>
                             </div>
-                            <p class="text-slate-700 font-bold text-sm mb-4">Al Moahel Establishment for Customs Clearance, Riyadh</p>
-                            <p class="text-sm text-slate-600 italic leading-relaxed">
-                                Oversaw complete transportation lifecycle for cross-border and local customs clearance logistics, managing a diverse fleet of heavy-duty vehicles.
+                            <p class="text-slate-500 font-bold text-sm mb-2">Al Moahel Establishment for Customs Clearance, Riyadh</p>
+                            <p class="text-sm text-slate-600 font-medium">
+                                Managed cross-border trucking operations and navigated complex customs challenges to ensure the seamless flow of international cargo into KSA.
                             </p>
                         </div>
 
-                        <!-- Role 3 -->
+                        <!-- Previous Role 2 -->
                         <div class="relative pl-8 border-l-2 border-slate-200 print-break">
-                            <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-slate-300 border-4 border-white shadow-sm"></div>
-                            <div class="flex flex-col md:flex-row md:justify-between mb-2">
-                                <h3 class="text-lg font-bold text-slate-900">Material Dispatch Coordinator</h3>
-                                <span class="text-sm font-bold text-slate-400 md:text-right">FEB 2016 — MAR 2019</span>
+                            <div class="absolute -left-[11px] top-0 w-5 h-5 rounded-full bg-slate-300 border-4 border-white"></div>
+                            <div class="flex flex-col lg:flex-row lg:justify-between mb-2">
+                                <h3 class="text-lg font-bold text-slate-800 uppercase tracking-tight">Material Dispatch Coordinator</h3>
+                                <span class="text-sm font-bold text-slate-400 uppercase">2016 — 2019</span>
                             </div>
-                            <p class="text-slate-700 font-bold text-sm mb-4">Al Jazeera Ambitions Factory Co., Dammam</p>
-                            <p class="text-sm text-slate-600 italic">
-                                Optimized dispatch schedules and material movement logs to maintain seamless factory-to-site delivery operations.
+                            <p class="text-slate-500 font-bold text-sm mb-2">Al Jazeera Ambitions Factory Co., Dammam</p>
+                            <p class="text-sm text-slate-600 font-medium">
+                                Streamlined material dispatch logs and factory vehicle coordination, improving delivery turnaround times for regional industrial clients.
                             </p>
                         </div>
                     </div>
                 </section>
 
                 <!-- Education -->
-                <section class="mb-12 print-break">
-                    <h2 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-3">
-                        <span class="w-8 h-8 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center text-sm">
-                            <i class="fas fa-university"></i>
+                <section class="print-break">
+                    <h2 class="text-2xl font-black text-slate-900 mb-6 flex items-center gap-3">
+                        <span class="w-10 h-10 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-graduation-cap text-sm"></i>
                         </span>
                         Academic Background
                     </h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="p-4 rounded-xl border border-slate-100 bg-slate-50">
-                            <p class="text-blue-600 text-xs font-bold mb-1">2012 — 2015</p>
-                            <h4 class="font-bold text-slate-800">B. Com (Hons.)</h4>
-                            <p class="text-xs text-slate-500">Financial Accounts</p>
-                            <p class="text-[10px] text-slate-400 uppercase mt-2">Vinoba Bhave University</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm">
+                            <h4 class="font-black text-slate-900 text-sm uppercase">Bachelor of Commerce</h4>
+                            <p class="text-xs font-bold text-blue-600 mt-1">Vinoba Bhave University | 2015</p>
                         </div>
-                        <div class="p-4 rounded-xl border border-slate-100 bg-slate-50">
-                            <p class="text-blue-600 text-xs font-bold mb-1">2010 — 2012</p>
-                            <h4 class="font-bold text-slate-800">Higher Secondary</h4>
-                            <p class="text-xs text-slate-500">Financial Accounts</p>
-                            <p class="text-[10px] text-slate-400 uppercase mt-2">N.I.O.S, Delhi</p>
+                        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200 shadow-sm">
+                            <h4 class="font-black text-slate-900 text-sm uppercase">Higher Secondary</h4>
+                            <p class="text-xs font-bold text-blue-600 mt-1">N.I.O.S, Delhi | 2012</p>
                         </div>
                     </div>
                 </section>
 
-                <!-- Footer/Contact Footer -->
-                <div class="mt-12 pt-8 border-t border-slate-100 text-center print-break">
-                    <p class="text-xs text-slate-400 uppercase tracking-widest mb-4">Permanent Address</p>
-                    <p class="text-sm text-slate-600 italic">
-                        S/O Salauddin Ahmed Budha Alimuddin Lane, Near D.A.V School, Asansol 713301, West Bengal, India.
-                    </p>
+                <div class="mt-12 pt-8 border-t border-slate-200 text-center text-xs text-slate-400 font-medium tracking-wide italic print-break">
+                    S/O Salauddin Ahmed Budha Alimuddin Lane, Asansol 713301, West Bengal, India.
                 </div>
 
             </article>
         </div>
     </main>
 
-    <footer class="text-center py-10 text-slate-400 text-xs uppercase tracking-widest no-print">
-        <p>&copy; 2024 Professional Dossier — Nadeem Salauddin</p>
+    <footer class="text-center py-10 text-slate-400 text-xs font-black uppercase tracking-[0.3em] no-print">
+        <p>Logistics & Transportation Portfolio — Nadeem Salauddin</p>
     </footer>
 
 </body>
